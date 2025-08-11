@@ -23,6 +23,12 @@
         "inRoutes": [
             "admin.posts.index",  "admin.banners.index", "admin.journey.index", "admin.issues.index"
         ]
+    },
+    {
+        "title": "Yêu cầu tư vấn",
+        "icon": "fas fa-phone",
+        "route": "admin.contacts.index",
+        "id": "contacts.index"
     }
 
 

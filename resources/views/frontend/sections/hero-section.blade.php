@@ -10,7 +10,7 @@
                 khăn mà
                 doanh nghiệp đang gặp phải để tháo gỡ kịp thời giúp doanh nghiệp phát triển bền vững trong kỷ nguyên số.
             </p>
-            <button class="action-button">
+            <button class="action-button" data-bs-toggle="modal" data-bs-target="#sgoModal">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
@@ -22,8 +22,8 @@
         </div>
         <div class="hero-image-wrapper">
             <div class="hero-circle"></div>
-            <img src="https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/hinh-thien-nhien-3d-002.jpg" alt="Business illustration" width="200" height="200"
-                class="hero-image">
+            <img src="https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/hinh-thien-nhien-3d-002.jpg"
+                alt="Business illustration" width="200" height="200" class="hero-image">
         </div>
     </div>
 </section>
