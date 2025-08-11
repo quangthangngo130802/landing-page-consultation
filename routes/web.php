@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Frontend\ConsultationSurvayController;
+use App\Http\Controllers\Frontend\EmailController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.layouts.app');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::post('/consultation', [ConsultationSurvayController::class, 'store'])->name('consultation.store');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BulkActionController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\FunctionsController;
 use App\Http\Controllers\Admin\HighlightController;
 use App\Http\Controllers\Admin\IssueController;
@@ -54,7 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('advise', AdviseController::class);
         Route::prefix('posts')->name('posts.')->group(function () {
             Route::resource('', PostController::class)
-            ->parameters(['' => 'post']);
+                ->parameters(['' => 'post']);
 
             // Các route SEO riêng
             Route::post('{id}/seo-analysis', [PostController::class, 'getSeoAnalysis'])->name('seo.analysis');
@@ -65,9 +66,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('seo', SeoController::class);
         Route::resource('contacts', ContactController::class);
+
+        Route::delete('contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
         Route::resource('prices', PriceController::class);
         Route::resource('reason', WhyChooseUsController::class);
         Route::resource('support', SupportController::class);
+
+        Route::post('update-mail-env', [EmailController::class, 'updateMailEnv'])->name('update-mail-env');
+
 
         Route::get('advisory', [AdvisoriesController::class, 'index'])->name('advisory.index');
 
@@ -81,6 +87,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('automation-template', [ZaloOaController::class, 'automationTemplate'])->name('automation.template');
             Route::get('message', [ZaloOaController::class, 'template'])->name('template');
         });
+
+
 
     });
 });

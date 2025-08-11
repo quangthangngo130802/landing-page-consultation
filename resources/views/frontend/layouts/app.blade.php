@@ -80,7 +80,7 @@
     </script>
 
 
-
+    @include('frontend.popup.index')
 
 </body>
 

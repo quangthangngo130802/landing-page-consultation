@@ -130,5 +130,7 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+    
+    'to' => env('MAIL_TO'),
 
 ];
