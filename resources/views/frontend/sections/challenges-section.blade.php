@@ -33,7 +33,7 @@
             Đã đến lúc <span class="red-text">TẠM DỪNG CHẠY</span> – để <span class="red-text">THÁO GỠ</span> điểm
             nghẽn!
         </h3>
-        <button class="action-button primary-button center-button">
+        <button class="action-button" data-bs-toggle="modal" data-bs-target="#sgoModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="20" height="16" x="2" y="4" rx="2" />

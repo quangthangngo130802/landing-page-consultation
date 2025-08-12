@@ -33,18 +33,40 @@ class JourneyController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = [];
 
+        // Lấy bản ghi Journey đầu tiên (để update hoặc xóa ảnh cũ)
+        $journey = Journey::first();
+
+        // Xử lý upload banner vào public/storage/journey
         if ($request->hasFile('banner')) {
-            $data['banner'] = saveImages($request, 'banner', 'journey');
+            $image = $request->file('banner');
+            $filename = time() . '_' . $image->getClientOriginalName();
+
+            // Thư mục public/storage/journey
+            $destinationPath = public_path('storage/journey');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Xóa ảnh cũ nếu có
+            if (!empty($journey->banner) && file_exists(public_path('storage/' . $journey->banner))) {
+                unlink(public_path('storage/' . $journey->banner));
+            }
+
+            // Lưu ảnh vào public/storage/journey
+            $image->move($destinationPath, $filename);
+
+            // Chỉ lưu tên thư mục và file (không có 'storage/')
+            $data['banner'] = 'journey/' . $filename;
         }
 
+
+        // Lưu tiêu đề
         $data['title'] = $request->title;
 
+        // Lấy và định dạng lại dữ liệu name + content
         $json = $request->only(['name', 'content']);
-
-        // Định dạng lại dữ liệu
         $formattedData = [];
 
         foreach ($json['name'] as $index => $name) {
@@ -56,8 +78,7 @@ class JourneyController extends Controller
 
         $data['content'] = json_encode($formattedData, JSON_UNESCAPED_UNICODE);
 
-        $journey = Journey::first();
-
+        // Update hoặc tạo mới Journey
         Journey::updateOrCreate(
             ['id' => optional($journey)->id],
             $data
@@ -66,6 +87,7 @@ class JourneyController extends Controller
         sessionFlash('success', 'Cập nhật thành công.');
         return redirect()->back();
     }
+
 
     /**
      * Display the specified resource.

@@ -2,7 +2,9 @@
 
 @section('title', 'Danh sách cần tư vấn')
 @section('content')
-
+@include('backend.layouts.partials.breadcrumb', [
+        'page' => 'Tư vấn',
+    ])
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="card-title">Danh sách cần tư vấn</h4>

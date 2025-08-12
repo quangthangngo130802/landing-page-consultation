@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BulkActionController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\FunctionsController;
@@ -63,7 +64,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         Route::resource('technologies', TechnologyController::class);
         Route::resource('banners', BannerController::class);
-
+        Route::resource('customers', CustomerController::class);
         Route::resource('seo', SeoController::class);
         Route::resource('contacts', ContactController::class);
 
