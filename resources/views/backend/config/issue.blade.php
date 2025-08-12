@@ -24,6 +24,9 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link fw-bold" id="seo-tab" href="">Cấu hình tư vẫn</a>
         </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold" id="seo-tab" href="{{ route('admin.customers.index') }}">Khách hàng</a>
+        </li>
     </ul>
 
     <form action="{{ route('admin.issues.store') }}" method="post" enctype="multipart/form-data" id="myForm">

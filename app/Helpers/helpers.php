@@ -15,19 +15,16 @@ if (!class_exists('sessionFlash')) {
     }
 }
 
-if (!class_exists('showImage')) {
+if (!function_exists('showImage')) {
     function showImage($path, $default = 'image-default.jpg')
     {
-        /** @var FilesystemAdapter $storage */
-        $storage = Storage::disk('public');
-
-        if ($path && Storage::exists($path)) {
-            return $storage->url($path);
+        if ($path && file_exists(public_path('storage/' . $path))) {
+            return asset('storage/' . $path) . '?v=' . time(); // chống cache
         }
-
         return asset('backend/assets/img/' . $default);
     }
 }
+
 
 if (!function_exists('transaction')) {
     function transaction($callback)
